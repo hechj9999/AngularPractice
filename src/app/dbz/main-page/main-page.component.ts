@@ -14,16 +14,30 @@ interface Personaje{
 })
 export class MainPageComponent{
 
+  personajes:Personaje[] =[
+    {nombre:'Krillin',poder:700},
+    {nombre:'Goku',poder:15000},
+    {nombre:'Vegueta',poder:8500},
+    {nombre:'MiVecino',poder:1},
+  ]
+
   nuevo:Personaje = {
-      nombre:'Truncks'
-      ,poder:14000
+      nombre:''
+      ,poder:0
     };
 
  //  agregar(event:any){
     agregar(){
       //event.preventDefault();
     //console.log(event);
-    console.log(this.nuevo);
+      if (this.nuevo.nombre.trim().length===0&&this.nuevo.poder>0)
+      {
+          return;
+      }
+
+      this.personajes.push(this.nuevo);
+      this.nuevo ={nombre:'',poder:0};
+      console.log(this.nuevo);
   }
 
 
